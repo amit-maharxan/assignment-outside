@@ -28,17 +28,18 @@
 
 	</head>
 
-	<body>
-	<main>
+	<body class="index-page">
 
-		<?php
+	<?php
 
-			/**
-			 * outside_header_content hook
-			 *
-			 * @hooked outside_output_header_content()
-			 *
-			 */
-			do_action( 'outside_header_content' );
+		/**
+		 * outside_header_content hook
+		 *
+		 * @hooked outside_output_header_content()
+		 *
+		 */
+		do_action( 'outside_header_content' );
 
-		?>
+	?>
+
+	<main class="main">

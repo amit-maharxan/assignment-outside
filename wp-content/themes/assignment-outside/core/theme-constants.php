@@ -26,6 +26,7 @@ define('OUTSIDE_THEME_ADMIN_URL', OUTSIDE_BASE_URL . '/core/admin');
 define('OUTSIDE_THEME_LIBS_URL' , OUTSIDE_BASE_URL . '/core/lib' );
 
 define('OUTSIDE_ASSEST_URI', OUTSIDE_BASE_URL . '/assets');
+define('OUTSIDE_VENDOR', OUTSIDE_BASE_URL . '/assets/vendor');
 define('OUTSIDE_JS', OUTSIDE_BASE_URL . '/assets/js');
 define('OUTSIDE_CSS', OUTSIDE_BASE_URL . '/assets/css');
 define('OUTSIDE_DIST_CSS', OUTSIDE_BASE_URL . '/assets/dist/css');

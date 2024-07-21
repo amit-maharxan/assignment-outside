@@ -58,6 +58,24 @@ if (!function_exists('outside_homepage_search')){
 	}
 }
 
+if (!function_exists('outside_homepage_gallery')){
+	function outside_homepage_gallery(){
+		get_template_part('template-parts/pages/homepage/page', 'gallery');
+	}
+}
+
+if (!function_exists('outside_homepage_faq')){
+	function outside_homepage_faq(){
+		get_template_part('template-parts/pages/homepage/page', 'faq');
+	}
+}
+
+if (!function_exists('outside_homepage_contact')){
+	function outside_homepage_contact(){
+		get_template_part('template-parts/pages/homepage/page', 'contact');
+	}
+}
+
 /*==================================================================================================
   Hooks
   ==================================================================================================*/
@@ -91,3 +109,6 @@ add_action( 'outside_footer', 'outside_output_footer');
 add_action( 'outside_homepage_content', 'outside_homepage_banner', 10 );
 add_action( 'outside_homepage_content', 'outside_homepage_events', 20 );
 add_action( 'outside_homepage_content', 'outside_homepage_search', 30 );
+add_action( 'outside_homepage_content', 'outside_homepage_gallery', 40 );
+add_action( 'outside_homepage_content', 'outside_homepage_faq', 50 );
+add_action( 'outside_homepage_content', 'outside_homepage_contact', 60 );

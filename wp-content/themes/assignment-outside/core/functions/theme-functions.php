@@ -11,9 +11,8 @@ if( !function_exists( 'outside_add_meta' ) ) :
 	* Add meta tags.
 	*/
 	function outside_add_meta() { ?>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="utf-8">
+  		<meta content="width=device-width, initial-scale=1.0" name="viewport">
 	<?php }
 endif;
 
@@ -22,9 +21,9 @@ if ( !function_exists( 'outside_add_links' ) ) :
 	* Add Google fonts, Pingback url, etc.
 	*/
 	function outside_add_links() { ?> 
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css">
+		<link href="https://fonts.googleapis.com" rel="preconnect">
+		<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 	<?php }
 endif;
 
@@ -39,7 +38,7 @@ function my_login_logo_url() {
 add_filter( 'login_headerurl', 'my_login_logo_url' );
 
 function my_login_logo_url_title() {
-	return 'OUTSIDE';
+	return 'ASSIGNMENT OUTSIDE';
 }
 add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 
