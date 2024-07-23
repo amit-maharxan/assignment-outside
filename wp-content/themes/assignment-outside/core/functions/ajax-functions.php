@@ -1,6 +1,6 @@
 <?php
 
-function search_events() {
+function filter_search_events() {
     $string = $_REQUEST['string'] ? htmlspecialchars($_REQUEST['string']) : '';
     $output = '';
 
@@ -42,10 +42,10 @@ function search_events() {
     endwhile;
     wp_reset_postdata();
 
-    return 'test';
+    echo $output;
     die();
 
 }
 
-add_action( 'wp_ajax_nopriv_search_events', 'search_events' );
-add_action( 'wp_ajax_search_events', 'search_events' );
+add_action( 'wp_ajax_nopriv_filter_search_events', 'filter_search_events' );
+add_action( 'wp_ajax_filter_search_events', 'filter_search_events' );

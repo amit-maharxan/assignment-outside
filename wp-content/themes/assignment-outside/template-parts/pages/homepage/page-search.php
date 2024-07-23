@@ -2,7 +2,9 @@
 
     <div class="container section-title" data-aos="fade-up">
         <form name="search-form" class="form__search">
-            <input type="text" name="_s" placeholder="Search Events" class="search-field">
+            <div class="search-input-field">
+                <input type="text" name="_s" placeholder="Search Events" class="search-field">
+            </div>
         </form>
     </div>
 
@@ -29,7 +31,9 @@
                                 <img src="<?php echo $image; ?>" class="card-img-top" alt="Front Image">
                                 <div class="card-body">
                                     <h5 class="card-title"><?php the_title();?></h5>
-                                    <img class="plus-icon" src="<?php echo site_url('/wp-content/uploads/2024/07/plus.png');?>" alt="plus-icon" width="40">
+                                    <div class="plus-div">
+                                        <img class="plus-icon" src="<?php echo site_url('/wp-content/uploads/2024/07/plus.png');?>" alt="plus-icon" width="40">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -37,8 +41,10 @@
                             <div class="card">
                                 <div class="card-body">
                                     <p class="card-text"><?php the_content();?></p>
-                                    <a href="<?php the_permalink();?>">READ MORE</a>
-                                    <img class="cross-icon" src="<?php echo site_url('/wp-content/uploads/2024/07/cross.png');?>" alt="cross-icon" width="40">
+                                    <a class="btn btn-read-more" href="<?php the_permalink();?>">READ MORE</a>
+                                    <div class="cross-div">
+                                        <img class="cross-icon" src="<?php echo site_url('/wp-content/uploads/2024/07/cross.png');?>" alt="cross-icon" width="40">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -63,7 +69,7 @@
         function load_posts(){
 
             var string = $('.search-field').val();
-            var str = '&string=' + string + '&action=search_events';
+            var str = '&string=' + string + '&action=filter_search_events';
 
             $.ajax({
                 type: "POST",

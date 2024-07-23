@@ -1,50 +1,3 @@
-<style>
-    .flip-card {
-        perspective: 1000px;
-        height: 60vh;
-    }
-
-    .flip-card-inner {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        text-align: center;
-        transition: transform 0.6s;
-        transform-style: preserve-3d;
-    }
-
-    .flip-card:hover .flip-card-inner {
-        transform: rotateY(180deg);
-    }
-
-    .flip-card-front,
-    .flip-card-back {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        backface-visibility: hidden;
-    }
-
-    .flip-card-front {
-        background-color: #f8f9fa;
-        color: #000;
-    }
-
-    .flip-card-back {
-        color: #000;
-        transform: rotateY(180deg);
-    }
-
-    .card-img-top {
-        max-height: 300px;
-        object-fit: cover;
-    }
-
-    section#search {
-        background-color: #90c490;
-    }
-</style>
-
 <section id="hotels" class="hotels section">
 
     <div class="container section-title" data-aos="fade-up">
@@ -72,7 +25,9 @@
                             <img src="<?php echo $image; ?>" class="card-img-top" alt="Front Image">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $title;?></h5>
+                                <div class="plus-div">
                                 <img class="plus-icon" src="<?php echo site_url('/wp-content/uploads/2024/07/plus.png');?>" alt="plus-icon" width="40">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -80,17 +35,22 @@
                         <div class="card">
                             <div class="card-body">
                                 <p class="card-text"><?php the_content();?></p>
-                                <a href="<?php echo $permalink;?>">READ MORE</a>
+                                <a class="btn btn-read-more" href="<?php echo $permalink;?>">READ MORE</a>
+                                <div class="cross-div">
                                 <img class="cross-icon" src="<?php echo site_url('/wp-content/uploads/2024/07/cross.png');?>" alt="cross-icon" width="40">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>      
         </div>
         <?php endforeach; endif; ?>
     </div>
 
+    <div class="download-text">
+        <a href="<?php echo get_field('featured_download_file');?>" download><?php echo get_field('featured_download_text');?> <i class="fa-solid fa-download"></i></a>
+    </div>
     </div>
 
 </section>

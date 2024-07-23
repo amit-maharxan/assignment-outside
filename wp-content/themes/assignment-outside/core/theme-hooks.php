@@ -64,15 +64,24 @@ if (!function_exists('outside_homepage_gallery')){
 	}
 }
 
-if (!function_exists('outside_homepage_faq')){
-	function outside_homepage_faq(){
-		get_template_part('template-parts/pages/homepage/page', 'faq');
+// Outside FAQ Content Hooks
+if (!function_exists('outside_faq_contents')){
+	function outside_faq_contents(){
+		get_template_part('template-parts/pages/faq/page', 'contents');
 	}
 }
 
-if (!function_exists('outside_homepage_contact')){
-	function outside_homepage_contact(){
-		get_template_part('template-parts/pages/homepage/page', 'contact');
+// Outside Contact Content Hooks
+if (!function_exists('outside_contact_contents')){
+	function outside_contact_contents(){
+		get_template_part('template-parts/pages/contact/page', 'contents');
+	}
+}
+
+// Outside Privacy Content Hooks
+if (!function_exists('outside_privacy_contents')){
+	function outside_privacy_contents(){
+		get_template_part('template-parts/pages/privacy/page', 'contents');
 	}
 }
 
@@ -110,5 +119,18 @@ add_action( 'outside_homepage_content', 'outside_homepage_banner', 10 );
 add_action( 'outside_homepage_content', 'outside_homepage_events', 20 );
 add_action( 'outside_homepage_content', 'outside_homepage_search', 30 );
 add_action( 'outside_homepage_content', 'outside_homepage_gallery', 40 );
-add_action( 'outside_homepage_content', 'outside_homepage_faq', 50 );
-add_action( 'outside_homepage_content', 'outside_homepage_contact', 60 );
+
+/**
+ * FAQ Hook
+ */
+add_action( 'outside_faq_content', 'outside_faq_contents', 10 );
+
+/**
+ * Contact Hook
+ */
+add_action( 'outside_contact_content', 'outside_contact_contents', 10 );
+
+/**
+ * Privacy Hook
+ */
+add_action( 'outside_privacy_content', 'outside_privacy_contents', 10 );

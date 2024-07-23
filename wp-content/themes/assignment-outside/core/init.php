@@ -10,7 +10,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { 
  	exit; // disable direct access 
- }
+}
 
 /*
  * Load theme constants
@@ -43,8 +43,8 @@ require_once ( OUTSIDE_FUNCTION.'/theme-functions.php' );
 require_once ( OUTSIDE_FUNCTION.'/extras.php' );
 require_once ( OUTSIDE_FUNCTION.'/ajax-functions.php' );
 
-
 require_once ( OUTSIDE_CORE.'/post_types/events.php' );
+require_once ( OUTSIDE_CORE.'/post_types/faq.php' );
 
 /**
  * Theme Hooks
