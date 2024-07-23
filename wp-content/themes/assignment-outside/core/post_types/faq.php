@@ -48,7 +48,7 @@ class outside_faq_post_type {
 	        'hierarchical'       	=> true,
 	        'menu_position'      	=> null,
 	        'supports'           	=> array( 'title', 'editor' ),
-	        'menu_icon'      		=> 'dashicons-screenoptions',
+	        'menu_icon'      		=> 'dashicons-edit-page',
 	    );
 
 	    register_post_type( 'faq', $args );

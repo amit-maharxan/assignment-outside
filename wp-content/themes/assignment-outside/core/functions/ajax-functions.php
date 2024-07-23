@@ -14,6 +14,8 @@ function filter_search_events() {
     $image = wp_get_attachment_url( get_post_thumbnail_id(get_the_ID(), 'thumbnail' ));
     $plus = site_url('/wp-content/uploads/2024/07/plus.png');
     $cross = site_url('/wp-content/uploads/2024/07/cross.png');
+    $description = get_the_content();
+    $description = wp_trim_words( $description, 50, '...' );
 
     $output .= '<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="flip-card">
@@ -30,7 +32,7 @@ function filter_search_events() {
                             <div class="flip-card-back">
                                 <div class="card">
                                     <div class="card-body">
-                                        <p class="card-text">'.get_the_content().'</p>
+                                        <p class="card-text">'.$description.'</p>
                                         <a href="'.get_the_permalink().'">READ MORE</a>
                                         <img class="cross-icon" src="'.$cross.'" alt="cross-icon" width="40">
                                     </div>

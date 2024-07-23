@@ -3,7 +3,9 @@
     <div class="container section-title" data-aos="fade-up">
         <form name="search-form" class="form__search">
             <div class="search-input-field">
+                <span class="form-field">
                 <input type="text" name="_s" placeholder="Search Events" class="search-field">
+                </span>
             </div>
         </form>
     </div>
@@ -22,7 +24,9 @@
                 's' => $search
             ));
             while ($wp_query->have_posts()) : $wp_query->the_post();
-            $image = wp_get_attachment_url( get_post_thumbnail_id($post->ID), 'thumbnail' ); ?>
+            $image = wp_get_attachment_url( get_post_thumbnail_id($post->ID), 'thumbnail' );
+            $description = get_the_content();
+            $description = wp_trim_words( $description, 50, '...' ); ?>
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                 <div class="flip-card">
                     <div class="flip-card-inner">
@@ -30,7 +34,7 @@
                             <div class="card">
                                 <img src="<?php echo $image; ?>" class="card-img-top" alt="Front Image">
                                 <div class="card-body">
-                                    <h5 class="card-title"><?php the_title();?></h5>
+                                    <h5 class="card-title same-height-2"><?php the_title();?></h5>
                                     <div class="plus-div">
                                         <img class="plus-icon" src="<?php echo site_url('/wp-content/uploads/2024/07/plus.png');?>" alt="plus-icon" width="40">
                                     </div>
@@ -40,7 +44,7 @@
                         <div class="flip-card-back">
                             <div class="card">
                                 <div class="card-body">
-                                    <p class="card-text"><?php the_content();?></p>
+                                    <p class="card-text"><?php echo $description;?></p>
                                     <a class="btn btn-read-more" href="<?php the_permalink();?>">READ MORE</a>
                                     <div class="cross-div">
                                         <img class="cross-icon" src="<?php echo site_url('/wp-content/uploads/2024/07/cross.png');?>" alt="cross-icon" width="40">

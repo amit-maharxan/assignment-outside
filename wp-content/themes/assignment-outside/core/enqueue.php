@@ -16,6 +16,7 @@ function outside_scripts() {
 	wp_enqueue_style('outside-aos-css', OUTSIDE_VENDOR . '/aos/aos.css');
 	wp_enqueue_style('outside-glightbox-css', OUTSIDE_VENDOR . '/glightbox/css/glightbox.min.css');
 	wp_enqueue_style('outside-swiper-css', OUTSIDE_VENDOR . '/swiper/swiper-bundle.min.css');
+	wp_enqueue_style('outside-slick-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css');
 	wp_enqueue_style('outside-main-css', OUTSIDE_CSS . '/main.css');
 	wp_enqueue_style('outside-custom-css', OUTSIDE_CSS . '/custom.css');
 
@@ -29,6 +30,8 @@ function outside_scripts() {
 	wp_enqueue_script( 'outside-aos-js', OUTSIDE_VENDOR . '/aos/aos.js', array( 'jquery' ), 'null', true );
 	wp_enqueue_script( 'outside-glightbox-js', OUTSIDE_VENDOR . '/glightbox/js/glightbox.min.js', array( 'jquery' ), 'null', true );
 	wp_enqueue_script( 'outside-swiper-js', OUTSIDE_VENDOR . '/swiper/swiper-bundle.min.js', array( 'jquery' ), 'null', true );
+	wp_enqueue_script( 'outside-slick-js', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js', array( 'jquery' ), 'null', true );
+	wp_enqueue_script( 'outside-matchHeight-js', 'https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js', array( 'jquery' ), 'null', true );
 	wp_enqueue_script( 'outside-main-js', OUTSIDE_JS . '/main.js', array( 'jquery' ), 'null', true );
 	
 	wp_enqueue_script( 'outside-custom-js', OUTSIDE_JS . '/custom.js', array( 'jquery' ), 'null', true );

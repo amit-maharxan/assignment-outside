@@ -5,7 +5,7 @@
     <p><?php the_field('gallery_description');?></p>
     </div>
 
-    <div class="container" data-aos="fade-up" data-aos-delay="100">
+    <div class="container">
 
     <div class="swiper init-swiper">
         <script type="application/json" class="swiper-config">

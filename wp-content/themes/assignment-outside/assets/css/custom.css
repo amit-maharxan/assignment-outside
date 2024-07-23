@@ -18,7 +18,6 @@ input.wpcf7-form-control.wpcf7-submit.has-spinner.form-control {
 /* event flip card css */
 .flip-card {
     perspective: 1000px;
-    height: 60vh;
 }
 .flip-card-inner {
     position: relative;
@@ -32,7 +31,7 @@ input.wpcf7-form-control.wpcf7-submit.has-spinner.form-control {
     transform: rotateY(180deg);
 }
 .flip-card-front, .flip-card-back {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
@@ -44,6 +43,7 @@ input.wpcf7-form-control.wpcf7-submit.has-spinner.form-control {
 .flip-card-back {
     color: #000;
     transform: rotateY(180deg);
+    display: flex;
 }
 .flip-card-back .card-body {
     background-color: #FFDDA2;
@@ -78,6 +78,7 @@ section#search {
 }
 .card {
     border-radius: 0px;
+    margin-block: auto;
 }
 .download-text {
     text-align: center;
@@ -104,4 +105,59 @@ input.search-field::before {
 input.search-field {
     background-color: #97DAEB;
     border-color: transparent;
+}
+.card {
+    border: 0px !important;
+}
+.plus-div, .cross-div {
+    text-align: left;
+    margin-top: 20px;
+}
+form.form__search input {
+    padding: 10px;
+    width: 300px;
+    padding-right: 40px;
+}
+input.search-field {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 16px;
+    background-image: url(http://localhost/assignment-outside/wp-content/uploads/2024/07/search.png);
+    background-position: 96%;
+    background-repeat: no-repeat;
+}
+
+/* Custom CSS for Slick Slider buttons with images */
+.slick-prev,
+.slick-next {
+  background-color: transparent; /* Make background transparent */
+  border: none; /* Remove border */
+  width: 40px; /* Set width */
+  height: 40px; /* Set height */
+  position: absolute; /* Position the buttons absolutely */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Adjust position to center */
+  z-index: 1; /* Ensure buttons are above slider content */
+  background-size: contain; /* Ensure background image is contained */
+  background-repeat: no-repeat; /* Prevent background from repeating */
+}
+
+/* Set custom image for previous button */
+.slick-prev {
+  left: 10px; /* Adjust horizontal position */
+  background-image: url('http://localhost/assignment-outside/wp-content/uploads/2024/07/left.png'); /* Set custom image */
+}
+
+/* Set custom image for next button */
+.slick-next {
+  right: 10px; /* Adjust horizontal position */
+  background-image: url('http://localhost/assignment-outside/wp-content/uploads/2024/07/right.png'); /* Set custom image */
+}
+
+/* Optional: Add hover effects */
+.slick-prev:hover,
+.slick-next:hover {
+  cursor: pointer; /* Change cursor to pointer */
+  filter: brightness(1.2); /* Brighten image on hover */
 }
