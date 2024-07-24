@@ -212,6 +212,20 @@ div#loader {
     border-color: #FFA409;
 }
 
+a.back-homepage {
+    text-align: center;
+    background-color: #EE5A46;
+    border-radius: 0px;
+    padding: 16px;
+    color: #fff;
+    border-color: #EE5A46;
+}
+
+section#error {
+    text-align: center;
+    margin: 50px;
+}
+
 @media (min-width: 768px) {
     .events-loadmore {
         display: none;
