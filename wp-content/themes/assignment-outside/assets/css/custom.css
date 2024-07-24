@@ -145,13 +145,13 @@ input.search-field {
 
 /* Set custom image for previous button */
 .slick-prev {
-  left: 10px; /* Adjust horizontal position */
+  left: -10%; /* Adjust horizontal position */
   background-image: url('http://localhost/assignment-outside/wp-content/uploads/2024/07/left.png'); /* Set custom image */
 }
 
 /* Set custom image for next button */
 .slick-next {
-  right: 10px; /* Adjust horizontal position */
+  right: -10%; /* Adjust horizontal position */
   background-image: url('http://localhost/assignment-outside/wp-content/uploads/2024/07/right.png'); /* Set custom image */
 }
 
@@ -160,4 +160,66 @@ input.search-field {
 .slick-next:hover {
   cursor: pointer; /* Change cursor to pointer */
   filter: brightness(1.2); /* Brighten image on hover */
+}
+
+.page_num.active {
+    padding: 10px;
+    background-color: #EE5A46;
+    cursor: pointer;
+}
+
+.events-pagination {
+    display: flex;
+    justify-content: center; /* Center align the page_num divs horizontally */
+    margin-top: 50px;
+    border: 1px solid #97DAEB;
+}
+
+.page_num {
+    display: flex;
+    align-items: center; /* Center align the content vertically */
+    justify-content: center; /* Center align the content horizontally */
+    width: 30px; /* Adjust width as needed */
+    height: 30px; /* Adjust height as needed */
+    margin: 5px; /* Optional: space between the page_num divs */
+    font-size: 16px; /* Adjust font size as needed */
+    cursor: pointer;
+}
+
+.events-pagination {
+    background-color: #97DAEB;
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div#loader {
+   display: none; 
+   text-align: center;
+}
+
+.events-loadmore {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.load-more-btn {
+    text-align: center;
+    background-color: #FFA409;
+    border-radius: 0px;
+    padding: 16px;
+    color: #fff;
+    border-color: #FFA409;
+}
+
+@media (min-width: 768px) {
+    .events-loadmore {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .events-pagination {
+        display: none;
+    }
 }

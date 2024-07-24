@@ -20,9 +20,10 @@
             }
             $wp_query = new WP_Query(array(
                 'post_type'       => 'events',
-                'posts_per_page'  => 12,
+                'posts_per_page'  => 6,
                 's' => $search
             ));
+            $total = $wp_query->found_posts;
             while ($wp_query->have_posts()) : $wp_query->the_post();
             $image = wp_get_attachment_url( get_post_thumbnail_id($post->ID), 'thumbnail' );
             $description = get_the_content();
@@ -56,14 +57,79 @@
                 </div>
             </div>
             <?php endwhile; wp_reset_query(); ?>
+            
+        </div>
+        
+        <div id="loader">
+            <img src="<?php echo site_url('/wp-content/uploads/2024/07/loader.gif');?>" width="200">
         </div>
 
+        <?php $total_pages = ceil($total/6); ?>
+        <div class="events-pagination">
+            <?php for($i=1; $i<=$total_pages; $i++){ ?>
+                <div class="page_num <?php echo ($i==1)?'active':'';?>" data-number="<?php echo $i;?>"><?php echo $i;?></div>
+            <?php } ?>
+        </div>
+        <div class="events-loadmore">
+            <?php if($total_pages>1){ ?>
+                <button class="load-more-btn" data-number="<?php echo $i;?>">LOAD MORE</button>
+            <?php } ?>
+        </div>
     </div>
 
 </section>
 
 <script>
     jQuery(document).ready(function(){
+        $('.load-more-btn').click(function(){
+            var $activePage = $('.page_num.active');
+            var $nextPage = $activePage.next('.page_num');
+            if ($nextPage.length) {
+                $nextPage.click();
+            }
+            if (!$nextPage.next('.page_num').length) {
+                $('.load-more-btn').hide();
+            }
+        });
+
+        $('.page_num').click(function(e){
+            e.preventDefault();
+            $("#search-events").html('');
+            $('#loader').show();
+            $('.page_num').removeClass('active');
+            $(this).addClass('active');
+
+            var page = $(this).attr("data-number")
+            var search_text = $('input.search-field').val();
+            var str = '&page=' + page + '&search_text=' + search_text + '&action=load_events';
+
+            $.ajax({
+                type: "POST",
+                dataType: "html",
+                url: '<?php echo admin_url( "admin-ajax.php" );?>',
+                data: str, 
+                success: function(data){
+                    $('#loader').hide();
+                    $("#search-events").html( data ).show('slow');
+
+                    $('.load-more-btn').click(function(){
+                        var $activePage = $('.page_num.active');
+                        var $nextPage = $activePage.next('.page_num');
+                        if ($nextPage.length) {
+                            $nextPage.click();
+                        }
+                        if (!$nextPage.next('.page_num').length) {
+                            $('.load-more-btn').hide();
+                        }
+                    });
+                },
+                error : function(jqXHR, textStatus, errorThrown) {
+                    $loader.html(jqXHR + " :: " + textStatus + " :: " + errorThrown);
+                }
+
+            });
+        });
+
         $('.form__search').submit(function(e){
             e.preventDefault();
             $("#search-events").html('');
@@ -74,6 +140,7 @@
 
             var string = $('.search-field').val();
             var str = '&string=' + string + '&action=filter_search_events';
+            $('#loader').show();
 
             $.ajax({
                 type: "POST",
@@ -81,8 +148,59 @@
                 url: '<?php echo admin_url( "admin-ajax.php" );?>',
                 data: str, 
                 success: function(data){
-                    $('#loader').hide('1000');
-                    $("#search-events").append( data ).show('slow');
+                    var responseData = JSON.parse(data);
+                    $('#loader').hide();
+                    $("#search-events").append( responseData.data ).show('slow');
+                    $(".events-pagination").html( responseData.total );
+
+                    $('.load-more-btn').click(function(){
+                        var $activePage = $('.page_num.active');
+                        var $nextPage = $activePage.next('.page_num');
+                        if ($nextPage.length) {
+                            $nextPage.click();
+                        }
+                        if (!$nextPage.next('.page_num').length) {
+                            $('.load-more-btn').hide();
+                        }
+                    });
+
+                    $('.page_num').click(function(e){
+                        e.preventDefault();
+                        $("#search-events").html('');
+                        $('#loader').show();
+                        $('.page_num').removeClass('active');
+                        $(this).addClass('active');
+
+                        var page = $(this).attr("data-number")
+                        var search_text = $('input.search-field').val();
+                        var str = '&page=' + page + '&search_text=' + search_text + '&action=load_events';
+
+                        $.ajax({
+                            type: "POST",
+                            dataType: "html",
+                            url: '<?php echo admin_url( "admin-ajax.php" );?>',
+                            data: str, 
+                            success: function(data){
+                                $('#loader').hide();
+                                $("#search-events").html( data ).show('slow');
+
+                                $('.load-more-btn').click(function(){
+                                    var $activePage = $('.page_num.active');
+                                    var $nextPage = $activePage.next('.page_num');
+                                    if ($nextPage.length) {
+                                        $nextPage.click();
+                                    }
+                                    if (!$nextPage.next('.page_num').length) {
+                                        $('.load-more-btn').hide();
+                                    }
+                                });
+                            },
+                            error : function(jqXHR, textStatus, errorThrown) {
+                                $loader.html(jqXHR + " :: " + textStatus + " :: " + errorThrown);
+                            }
+
+                        });
+                    });
                 },
                 error : function(jqXHR, textStatus, errorThrown) {
                     $loader.html(jqXHR + " :: " + textStatus + " :: " + errorThrown);
